@@ -1,0 +1,17 @@
+timezone: UTC
+
++setup:
+  echo>: start ${session_time}
+
++pypy:
+  py>: task.EXAMPLE.getParamNum
+
++repeat:
+  for_each>:
+    param: ${params}
+  _do:
+    require>: reuse_child
+    session_time: ${moment(session_time).add(param.no, 's').format('YYYY-MM-DDTHH:mm:ssZ')}
+    params:
+      param: ${param.value}
+

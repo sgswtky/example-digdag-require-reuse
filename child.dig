@@ -1,0 +1,8 @@
+timezone: UTC
+
++setup:
+  echo>: ${moment(session_time).utc().format('YYYY-MM-DD HH:mm:ss Z')}
+
++child_job:
+  sh>: sleep 5 && echo ${param}
+

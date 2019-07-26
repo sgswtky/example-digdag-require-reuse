@@ -1,0 +1,16 @@
+timezone: UTC
+
++setup:
+  echo>: start ${session_time}
+
++pypy:
+  py>: task.EXAMPLE.getParam
+
++repeat:
+  for_each>:
+    param: ${params}
+  _do:
+    require>: child
+    params:
+      param: ${param}
+
